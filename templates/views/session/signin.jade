@@ -1,0 +1,20 @@
+extends ../../layouts/default
+
+block flash-messages
+	//- intentionally blank
+block content
+	.container
+		.page-intro
+			h1.text-center Sign into Reddit Racing
+			+flash-messages(messages)
+		.page-content
+			.row
+				.col-md-4.col-md-offset-4
+					.well
+						+auth-forms({ modal: false, initial: 'signin' })
+
+block js
+	script.
+		jQuery(function($) {
+			$('.auth-form').find('.form-control').eq(0).focus().select();
+		});
