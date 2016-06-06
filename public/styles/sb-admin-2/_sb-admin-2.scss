@@ -1,11 +1,5 @@
 @import "variables";
 
-// Global Styles
-
-body {
-    background-color: $gray-lightest;
-}
-
 // Wrappers
 
 #wrapper {
@@ -23,7 +17,7 @@ body {
         position: inherit;
         margin: 0 0 0 250px;
         padding: 0 30px;
-        border-left: 1px solid darken($gray-lightest, 6.5%);
+        border-left: 1px solid transparent;
     }
 }
 
@@ -103,10 +97,10 @@ body {
 }
 
 .sidebar ul li {
-    border-bottom: 1px solid darken($gray-lightest, 6.5%);
+    border-bottom: 1px solid darken($gray-dark, 6.5%);
     a {
         &.active {
-            background-color: $gray-lighter;
+            background-color: $gray-darker;
         }
     }
 }

@@ -1086,7 +1086,7 @@ figure {
 img {
   vertical-align: middle; }
 
-.img-responsive {
+.img-responsive, .profile-card__avatar img {
   display: block;
   max-width: 100%;
   height: auto; }
@@ -5026,7 +5026,7 @@ button.list-group-item-danger {
 .embed-responsive-4by3 {
   padding-bottom: 75%; }
 
-.well {
+.well, .profile-card {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -5035,7 +5035,7 @@ button.list-group-item-danger {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
-  .well blockquote {
+  .well blockquote, .profile-card blockquote {
     border-color: #ddd;
     border-color: rgba(0, 0, 0, 0.15); }
 
@@ -5968,9 +5968,6 @@ button.close {
     border-right-width: 14px;
     border-left-width: 0; } }
 
-body {
-  background-color: #f8f8f8; }
-
 #wrapper {
   width: 100%; }
 
@@ -5984,7 +5981,7 @@ body {
     position: inherit;
     margin: 0 0 0 250px;
     padding: 0 30px;
-    border-left: 1px solid #e7e7e7; } }
+    border-left: 1px solid transparent; } }
 
 .navbar-top-links {
   margin-right: 0; }
@@ -6039,9 +6036,9 @@ body {
   padding: 15px; }
 
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7; }
+  border-bottom: 1px solid #222222; }
   .sidebar ul li a.active {
-    background-color: #eeeeee; }
+    background-color: #222222; }
 
 .sidebar .arrow {
   float: right; }
@@ -6235,6 +6232,9 @@ table.dataTable thead .sorting:after {
     .panel-yellow a:hover {
       color: #df8a13; }
 
+body {
+  background-color: #2a3f54; }
+
 html,
 body {
   width: 100%;
@@ -6258,3 +6258,26 @@ body {
   display: block;
   max-width: 100%;
   height: auto; }
+
+.navbar-dark {
+  background-color: #192632; }
+  .navbar-dark a {
+    color: #f8f8f8; }
+  .navbar-dark .nav > li > a:hover,
+  .navbar-dark .nav > li > a:focus {
+    background-color: #223243; }
+  .navbar-dark .nav > li.active > a {
+    background-color: #2a3f54; }
+
+.sidebar.navbar-default {
+  background-color: #2a3f54; }
+
+.sidebar > .sidebar-nav > .nav li {
+  border-bottom: 1px solid #25374a; }
+  .sidebar > .sidebar-nav > .nav li.active a {
+    background-color: #223243; }
+  .sidebar > .sidebar-nav > .nav li a {
+    color: #eeeeee; }
+    .sidebar > .sidebar-nav > .nav li a:hover, .sidebar > .sidebar-nav > .nav li a:focus {
+      color: #f8f8f8;
+      background-color: #334c65; }

@@ -23,4 +23,10 @@
 // ===========
 
 // Add your own site style includes here
+@import "site/globals";
 @import "site/layout";
+
+// Components
+@import "site/components/navbar-dark";
+@import "site/components/sidebar";
+@import "site/components/profile-card";

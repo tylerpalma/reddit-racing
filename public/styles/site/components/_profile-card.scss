@@ -1,0 +1,9 @@
+.profile-card {
+  @extend .well;
+}
+
+.profile-card__avatar {
+  img {
+    @extend .img-responsive;
+  }
+}

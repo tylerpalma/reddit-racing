@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block content
+  .profile-card
+    .row
+      .col-sm-3
+        .profile-card__avatar
+          img(src="http://placehold.it/250x250")
+      .col-sm-9
+        .profile
+          h2.profile__username= data.user.username
+          p.profile__email= data.user.email
+          p.profile__driver-number= data.user.driverNumber

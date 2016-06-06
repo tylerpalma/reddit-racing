@@ -44,7 +44,7 @@ html
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
 
-			nav(role="navigation").navbar.navbar-default.navbar-fixed-top
+			nav(role="navigation").navbar.navbar-dark.navbar-fixed-top
 				.container-fluid
 					.navbar-header
 						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -67,9 +67,11 @@ html
 			div.navbar-default.sidebar
 				div.sidebar-nav.navbar-collapse
 					ul#side-menu.nav
-						li: a(href="/")
-							i.fa.fa-bar-chart-o.fa-fw
-							| Charts
+						each link in sidebarNavLinks
+							li(class=(section == link.key ? 'active' : null))
+								a(href=link.href)
+									i.fa.fa-fw(class=link.icon)
+									| #{ link.label }
 
 			//- BODY
 			#page-wrapper

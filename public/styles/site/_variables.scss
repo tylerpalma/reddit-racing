@@ -1,3 +1,11 @@
 // Override Bootstrap variables in this file, e.g.
 
-$font-size-base: 14px;
+$font-size-base:               14px;
+
+$sidebar-base-color:           #2a3f54;
+$sidebar-base-color-light:     lighten($sidebar-base-color, 5%);
+$sidebar-base-color-lighter:   lighten($sidebar-base-color, 10%);
+$sidebar-base-color-lightest:  lighten($sidebar-base-color, 15%);
+$sidebar-base-color-dark:      darken($sidebar-base-color, 5%);
+$sidebar-base-color-darker:    darken($sidebar-base-color, 10%);
+$sidebar-base-color-darkest:   darken($sidebar-base-color, 15%);

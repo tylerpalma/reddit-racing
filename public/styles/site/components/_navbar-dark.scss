@@ -1,0 +1,16 @@
+.navbar-dark {
+  background-color: $sidebar-base-color-darker;
+
+  a {
+    color: $gray-lightest;
+  }
+
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    background-color: $sidebar-base-color-dark;
+  }
+
+  .nav > li.active > a {
+    background-color: $sidebar-base-color;
+  }
+}

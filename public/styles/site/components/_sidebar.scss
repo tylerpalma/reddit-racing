@@ -1,0 +1,23 @@
+.sidebar.navbar-default {
+  background-color: $sidebar-base-color;
+}
+
+.sidebar > .sidebar-nav > .nav {
+  li {
+    border-bottom: 1px solid darken($sidebar-base-color, 3%);
+
+    &.active a {
+      background-color: $sidebar-base-color-dark;
+    }
+
+    a {
+      color: $gray-lighter;
+
+      &:hover,
+      &:focus {
+        color: $gray-lightest;
+        background-color: $sidebar-base-color-light;
+      }
+    }
+  }
+}
