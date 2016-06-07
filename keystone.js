@@ -4,6 +4,7 @@ require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone');
+var passport = require('passport');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -29,6 +30,7 @@ keystone.init({
 	'user model': 'User',
 	'cookie secret': process.env.COOKIE_SECRET || 'rora',
 
+	'steam api key': process.env.STEAM_API_KEY,
 });
 
 // Load your project's Models
@@ -43,7 +45,8 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
-	editable: keystone.content.editable
+	editable: keystone.content.editable,
+	steam_api_key: keystone.get('steam api key'),
 });
 
 // Load your project's Routes

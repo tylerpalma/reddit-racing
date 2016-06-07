@@ -15,7 +15,16 @@ User.add({
 	password: { type: Types.Password, initial: true, required: true },
 	driverNumber: { type: String, initial: true, required: true },
 	location: { type: Types.Location },
+	services: {
+		steam: {
+			isConfigured: { type: Boolean, label: 'Steam account has been linked', default: false },
+			steamId: { type: String, label: 'Steam ID'},
+			username: { type: String, label: 'Username'},
+			avatar: { type: String, label: 'Avatar'},
+		},
+	},
 }, 'Permissions', {
+	isVerified: { type: Boolean, label: 'Has verified email address'},
 	isMod: { type: Boolean, label: 'Can Moderate', index: true },
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true }
 });

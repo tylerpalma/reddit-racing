@@ -5,7 +5,10 @@ block content
     .row
       .col-sm-3
         .profile-card__avatar
-          img(src="http://placehold.it/250x250")
+          if data.user.services.steam.avatar
+            img(src="#{ data.user.services.steam.avatar }")
+          else
+            img(src="http://placehold.it/184x184")
       .col-sm-9
         .profile
           h2.profile__username= data.user.username

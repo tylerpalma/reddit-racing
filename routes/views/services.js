@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	locals.section = 'profile';
+	locals.section = 'linked-services';
 	locals.filters = {
 		user: req.params.user
 	};
@@ -48,7 +48,6 @@ exports = module.exports = function(req, res) {
 	});*/
 
 	// Render the view
-	console.log(req.user);
-	view.render('profile');
+	view.render('services');
 
 };

@@ -59,11 +59,19 @@ html
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 						ul.nav.navbar-nav
 							if user
-								if user.canAccessKeystone
-									li: a(href='/keystone') Open Admin Panel
-								li: a(href='/signout') Sign Out
+								li.dropdown
+									a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+										i.fa.fa-user.fa-fw
+										| #{ locals.user.username }
+										i.fa.fa-caret-down.fa-fw
+									ul.dropdown-menu
+										li: a(href="/profile") My Profile
+										if user.canAccessKeystone
+											li: a(href='/keystone') Admin Panel
+										li: a(href="/signout") Sign Out
 							else
 								li: a(href='/signin') Sign In
+								li: a(href='/join') Register
 			div.navbar-default.sidebar
 				div.sidebar-nav.navbar-collapse
 					ul#side-menu.nav

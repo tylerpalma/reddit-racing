@@ -38,12 +38,13 @@ exports = module.exports = function(app) {
 
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
+	//app.get('/blog/:category?', routes.views.blog);
+	//app.get('/blog/post/:post', routes.views.post);
 	app.get('/profile', routes.views.profile);
-	app.get('/profile/:user', routes.views.profile);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
+	app.get('/profile/services', routes.views.services);
+	app.get('/user/:user', routes.views.profile);
+	//app.get('/gallery', routes.views.gallery);
+	//app.all('/contact', routes.views.contact);
 
 	// Session
 	app.all('/join', routes.views.session.join);
@@ -55,6 +56,8 @@ exports = module.exports = function(app) {
 	// Authentication
 	app.all('/auth/confirm', routes.auth.confirm);
 	app.all('/auth/app', routes.auth.app);
+	app.all('/auth/steam', routes.auth.serviceSteam);
+	app.all('/auth/steam/return', routes.auth.serviceSteam);
 	//app.all('/auth/:service', routes.auth.service);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block content
+  .profile-card
+    .row
+      .col-xs-12
+        if data.user.services.steam.isConfigured
+          button.btn.btn-primary(disabled) Steam Account Linked
+        else
+          a.btn.btn-primary(href="/auth/steam") Link Steam Account

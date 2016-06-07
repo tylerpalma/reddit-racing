@@ -19,7 +19,7 @@ exports = module.exports = function(req, res) {
 
 			function(cb) {
 
-				if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
+				if (!req.body.email || !req.body.password) {
 					req.flash('error', 'Please enter a name, email and password.');
 					return cb(true);
 				}
@@ -46,14 +46,8 @@ exports = module.exports = function(req, res) {
 			function(cb) {
 
 				var userData = {
-					name: {
-						first: req.body.firstname,
-						last: req.body.lastname,
-					},
 					email: req.body.email,
 					password: req.body.password,
-
-					website: req.body.website
 				};
 
 				var User = keystone.list('User').model,

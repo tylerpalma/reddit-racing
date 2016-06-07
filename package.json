@@ -9,6 +9,8 @@
     "keystone": "^0.3.16",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
+    "passport": "^0.3.2",
+    "passport-steam": "^1.0.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
