@@ -5,8 +5,8 @@ block content
     .row
       .col-sm-3
         .profile-card__avatar
-          if data.user.services.steam.avatar
-            img(src="#{ data.user.services.steam.avatar }")
+          if data.user.steam.avatar
+            img(src="#{ data.user.steam.avatar }")
           else
             img(src="http://placehold.it/184x184")
       .col-sm-9

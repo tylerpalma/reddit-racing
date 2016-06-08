@@ -21,10 +21,43 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var RedditStrategy = require('passport-reddit').Strategy;
+var SteamStrategy = require('passport-steam').Strategy;
+var crypto = require('crypto');
 var importRoutes = keystone.importer(__dirname);
+
+//
+//	Set passport strategies
+//
+
+passport.use(new SteamStrategy ({
+		returnURL: keystone.get('base url') + 'auth/steam/return',
+		realm: keystone.get('base url'),
+		apiKey: keystone.get('steam api key'),
+	},
+	function (identifier, profile, done) {
+		process.nextTick(function () {
+			profile.identifier = identifier;
+			return done(null, profile);
+		});
+	}
+));
+
+passport.use(new RedditStrategy ({
+		clientID: keystone.get('reddit app id'),
+		clientSecret: keystone.get('reddit app secret'),
+		callbackURL: keystone.get('base url') + 'auth/reddit/return',
+	},
+	function (accessToken, refreshToken, profile, done) {
+		return done(null, profile);
+	}
+));
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', passport.initialize());
+keystone.pre('routes', passport.session({ secret: keystone.get('cookie secret') }));
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -33,18 +66,22 @@ var routes = {
 	auth: importRoutes('./auth'),
 };
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 // Setup Route Bindings
 exports = module.exports = function(app) {
 
 	// Views
 	app.get('/', routes.views.index);
-	//app.get('/blog/:category?', routes.views.blog);
-	//app.get('/blog/post/:post', routes.views.post);
 	app.get('/profile', routes.views.profile);
 	app.get('/profile/services', routes.views.services);
 	app.get('/user/:user', routes.views.profile);
-	//app.get('/gallery', routes.views.gallery);
-	//app.all('/contact', routes.views.contact);
 
 	// Session
 	app.all('/join', routes.views.session.join);
@@ -56,9 +93,21 @@ exports = module.exports = function(app) {
 	// Authentication
 	app.all('/auth/confirm', routes.auth.confirm);
 	app.all('/auth/app', routes.auth.app);
-	app.all('/auth/steam', routes.auth.serviceSteam);
+
+	// Service Auth
+	app.all('/auth/steam',
+		passport.authenticate('steam', { failureRedirect: '/profile/services' }),
+		function (req, res) {
+			res.redirect('/profile/services');
+		});
 	app.all('/auth/steam/return', routes.auth.serviceSteam);
-	//app.all('/auth/:service', routes.auth.service);
+	app.all('/auth/reddit', function (req, res, next) {
+		req.session.redditState = crypto.randomBytes(32).toString('hex');
+		passport.authenticate('reddit', {
+			state: req.session.redditState,
+		})(req, res, next);
+	});
+	app.all('/auth/reddit/return', routes.auth.serviceReddit);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

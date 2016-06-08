@@ -4,13 +4,15 @@ require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone');
-var passport = require('passport');
+
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
 keystone.init({
+
+	'base url': process.env.BASE_URL || 'http://localhost:3000/',
 
 	'name': 'Reddit Racing',
 	'brand': 'Reddit Racing',
@@ -31,6 +33,8 @@ keystone.init({
 	'cookie secret': process.env.COOKIE_SECRET || 'rora',
 
 	'steam api key': process.env.STEAM_API_KEY,
+	'reddit app id': process.env.REDDIT_APP_ID,
+	'reddit app secret': process.env.REDDIT_APP_SECRET,
 });
 
 // Load your project's Models
@@ -46,7 +50,6 @@ keystone.set('locals', {
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	editable: keystone.content.editable,
-	steam_api_key: keystone.get('steam api key'),
 });
 
 // Load your project's Routes

@@ -19,7 +19,7 @@ exports = module.exports = function(req, res) {
 		{ label: 'Linked Services', key: 'linked-services', href: '/profile/services', icon: 'fa-link' }
 	];
 
-	// Load the current post
+	// Load current user
 	view.on('init', function(next) {
 
       if (!locals.filters.user) locals.filters.user = locals.user._id;
@@ -30,25 +30,13 @@ exports = module.exports = function(req, res) {
 
   		q.exec(function(err, result) {
   			locals.data.user = result;
+				console.log(locals.data.user);
   			next(err);
   		});
 
 	});
 
-	// Load other posts
-	/*view.on('init', function(next) {
-
-		var q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('4');
-
-		q.exec(function(err, results) {
-			locals.data.posts = results;
-			next(err);
-		});
-
-	});*/
-
 	// Render the view
-	console.log(req.user);
 	view.render('profile');
 
 };

@@ -15,13 +15,18 @@ User.add({
 	password: { type: Types.Password, initial: true, required: true },
 	driverNumber: { type: String, initial: true, required: true },
 	location: { type: Types.Location },
-	services: {
-		steam: {
-			isConfigured: { type: Boolean, label: 'Steam account has been linked', default: false },
-			steamId: { type: String, label: 'Steam ID'},
-			username: { type: String, label: 'Username'},
-			avatar: { type: String, label: 'Avatar'},
-		},
+	steam: {
+		isConfigured: { type: Boolean, label: 'Steam account has been linked', default: false },
+		steamId: { type: String, label: 'Steam ID'},
+		username: { type: String, label: 'Steam username'},
+		avatar: { type: String, label: 'Avatar'},
+	},
+	live: {
+		isConfigured: { type: Boolean, label: 'Live account has been linked', default: false },
+	},
+	reddit: {
+		isConfigured: { type: Boolean, label: 'Live account has been linked', default: false },
+		username: { type: String, label: 'Reddit username'},
 	},
 }, 'Permissions', {
 	isVerified: { type: Boolean, label: 'Has verified email address'},
