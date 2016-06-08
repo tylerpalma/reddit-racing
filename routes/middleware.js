@@ -23,10 +23,14 @@ exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 
 	locals.navLinks = [
-		{ label: 'Home',		key: 'home',		href: '/' },
+		//{ label: 'Home',		key: 'home',		href: '/' },
 	];
 
 	locals.sidebarNavLinks = [
+		{ label: 'My Account',	key: 'account',	href: '#', icon: 'fa-gear', dropdown: [
+			{ label: 'Profile', key: 'profile', href: '/profile', icon: 'fa-user' },
+			{ label: 'Linked Services', key: 'linked-services', href: '/profile/services', icon: 'fa-link' }
+		]},
 	];
 
 	locals.user = req.user;
