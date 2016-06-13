@@ -42,7 +42,7 @@ gulp.task('sass', function(){
 });
 
 
-gulp.task('runKeystone', shell.task('nodemon keystone.js'));
+gulp.task('runKeystone', shell.task('$(pwd)/node_modules/nodemon/bin/nodemon.js keystone.js'));
 gulp.task('watch', [
 
   'watch:sass',
