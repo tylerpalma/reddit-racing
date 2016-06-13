@@ -6044,10 +6044,10 @@ button.close {
   float: right; }
 
 .sidebar .fa.arrow:before {
-  content: "\f104"; }
-
-.sidebar .active > a > .fa.arrow:before {
   content: "\f107"; }
+
+.sidebar .collapsed > a > .fa.arrow:before {
+  content: "\f104"; }
 
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {

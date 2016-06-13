@@ -82,6 +82,8 @@ exports = module.exports = function(app) {
 	app.get('/profile', routes.views.profile);
 	app.get('/profile/services', routes.views.services);
 	app.get('/user/:user', routes.views.profile);
+	app.get('/series', routes.views.series.list);
+	app.all('/series/create', routes.views.series.create);
 
 	// Session
 	app.all('/join', routes.views.session.join);

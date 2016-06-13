@@ -6,18 +6,14 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	locals.section = 'linked-services';
+	locals.section = 'account';
+	locals.subsection = 'linked-services';
 	locals.filters = {
 		user: req.params.user
 	};
 	locals.data = {
 		user: []
 	};
-
-	locals.sidebarNavLinks = [
-		{ label: 'Profile',	key: 'profile',	href: '/profile', icon: 'fa-user' },
-		{ label: 'Linked Services', key: 'linked-services', href: '/profile/services', icon: 'fa-link' }
-	];
 
 	// Load the current post
 	view.on('init', function(next) {

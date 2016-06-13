@@ -65,21 +65,32 @@ html
 										| #{ locals.user.username }
 										i.fa.fa-caret-down.fa-fw
 									ul.dropdown-menu
-										li: a(href="/profile") My Profile
+										li: a(href="/profile") My Account
 										if user.canAccessKeystone
 											li: a(href='/keystone') Admin Panel
+										li.divider
 										li: a(href="/signout") Sign Out
 							else
 								li: a(href='/signin') Sign In
 								li: a(href='/join') Register
-			div.navbar-default.sidebar
+								
+			div.navbar-default.sidebar(role="navigation")
 				div.sidebar-nav.navbar-collapse
 					ul#side-menu.nav
 						each link in sidebarNavLinks
-							li(class=(section == link.key ? 'active' : null))
+							li(data-toggle="collapse" data-target="##{ link.key }" class=(section == link.key ? 'active' : 'collapsed'))
 								a(href=link.href)
 									i.fa.fa-fw(class=link.icon)
 									| #{ link.label }
+									if link.dropdown
+										span.fa.arrow
+								if link.dropdown
+									ul.nav.nav-second-level.collapse(id="#{link.key}" class=(section == link.key ? 'in' : null))
+										each subLink in link.dropdown
+											li(class=(subsection == subLink.key ? 'active' : null))
+												a(href=subLink.href)
+													i.fa.fa-fw(class=subLink.icon)
+													| #{ subLink.label }
 
 			//- BODY
 			#page-wrapper

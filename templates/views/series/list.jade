@@ -1,0 +1,17 @@
+extends ../../layouts/default
+
+block intro
+	h1 Browse Series
+
+block content
+	.col-sm-8.col-md-6
+		table.table.table-striped
+			tr
+				th Title
+				th Game
+				th Creator
+			each item in data.series
+				tr
+					td= item.title
+					td= item.game
+					td= item.owner.username
