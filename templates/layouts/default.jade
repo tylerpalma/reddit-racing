@@ -82,7 +82,8 @@ html
 								a(href=link.href)
 									i.fa.fa-fw(class=link.icon)
 									| #{ link.label }
-									span.fa.arrow
+									if link.dropdown
+										span.fa.arrow
 								if link.dropdown
 									ul.nav.nav-second-level.collapse(id="#{link.key}" class=(section == link.key ? 'in' : null))
 										each subLink in link.dropdown

@@ -28,9 +28,13 @@ exports.initLocals = function(req, res, next) {
 
 	locals.sidebarNavLinks = [
 		{ label: 'My Account',	key: 'account',	href: '#', icon: 'fa-gear', dropdown: [
-			{ label: 'Profile', key: 'profile', href: '/profile', icon: 'fa-user' },
-			{ label: 'Linked Services', key: 'linked-services', href: '/profile/services', icon: 'fa-link' }
+			{ label: 'Profile', key: 'profile', href: '/profile', icon: '' },
+			{ label: 'Linked Services', key: 'linked-services', href: '/profile/services', icon: '' }
 		]},
+		{ label: 'Series',	key: 'series',	href: '#', icon: 'fa-trophy', dropdown: [
+			{ label: 'Browse', key: 'series-list', href: '/series', icon: '' },
+			{ label: 'Create', key: 'series-create', href: '/series/create', icon: '' }
+		]}
 	];
 
 	locals.user = req.user;

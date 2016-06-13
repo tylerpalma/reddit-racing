@@ -1,0 +1,24 @@
+extends ../../layouts/default
+
+block intro
+	h1 Create a Series
+
+block content
+
+	.row: .col-sm-8.col-md-6
+		form(method='post')
+			input(type='hidden', name='action', value='createSeries')
+			.form-group(class=validationErrors.title ? 'has-error' : null)
+				label Title
+				input(type='text', name='title', value=formData['title']).form-control
+			.form-group(class=validationErrors.game ? 'has-error' : null)
+				label Game
+				select(name='game').form-control
+					option(value='') (select one)
+					each game in seriesGames
+						option(value=game.value, selected=formData.game == game.value)= game.label
+			.form-group(class=validationErrors.content ? 'has-error' : null)
+				label Description
+				textarea(name='content', placeholder='A description of your series...' rows=10).form-control= formData.content
+			.form-actions
+				button(type='submit').btn.btn-primary Create
